@@ -9,7 +9,7 @@ import (
 	snmpgo "github.com/k-sone/snmpgo"
 )
 
-func sendTrap(alert types.Alert) {
+func sendTrap(alert types.Alert, uptime uint32) {
 
 	// Prepare an SNMP handler:
 	snmp, err := snmpgo.NewSNMP(snmpgo.SNMPArguments{
@@ -27,6 +27,9 @@ func sendTrap(alert types.Alert) {
 
 	// Build VarBind list:
 	var varBinds snmpgo.VarBinds
+
+	// Insert uptime varbind
+	varBinds = append(varBinds, snmpgo.NewVarBind(snmpgo.OidSysUpTime, snmpgo.NewTimeTicks(uptime)))
 
 	// The "enterprise OID" for the trap (rising/firing or falling/recovery):
 	if alert.Status == "firing" {

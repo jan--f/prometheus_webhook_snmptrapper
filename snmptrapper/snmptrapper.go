@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/signal"
 	"sync"
+	"time"
 
 	config "github.com/chrusty/prometheus_webhook_snmptrapper/config"
 	types "github.com/chrusty/prometheus_webhook_snmptrapper/types"
@@ -13,12 +14,16 @@ import (
 )
 
 var (
-	log      = logrus.WithFields(logrus.Fields{"logger": "SNMP-trapper"})
-	myConfig config.Config
-	trapOIDs types.TrapOIDs
+	log       = logrus.WithFields(logrus.Fields{"logger": "SNMP-trapper"})
+	myConfig  config.Config
+	trapOIDs  types.TrapOIDs
+	startTime time.Time
 )
 
 func init() {
+	// Remember start time
+	startTime = time.Now()
+
 	// Set the log-level:
 	logrus.SetLevel(logrus.DebugLevel)
 
@@ -54,7 +59,8 @@ func Run(myConfigFromMain config.Config, alertsChannel chan types.Alert, waitGro
 
 				// Send a trap based on this alert:
 				log.WithFields(logrus.Fields{"status": alert.Status}).Debug("Received an alert")
-				sendTrap(alert)
+				uptime := uint32(time.Since(startTime).Nanoseconds()/1000)
+				sendTrap(alert, uptime)
 			}
 		}
 	}()
