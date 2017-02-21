@@ -8,6 +8,7 @@ const (
 	oidSNMPv2SysLocation                        = "1.3.6.1.2.1.1.6"         // Variable: location
 	oidSNMPv2SysServices                        = "1.3.6.1.2.1.1.7"         // Variable: service
 	oidSNMPv2SysORLastChange                    = "1.3.6.1.2.1.1.8"         //
+	oidSNMPv2SnmpTrapAddress                    = "1.3.6.1.6.3.18.1.3"      //
 	oidRMONAlarmStatus                          = "1.3.6.1.2.1.16.3.1.1.12" //
 	oidRMONHostAddress                          = "1.3.6.1.2.1.16.4.2.1.1"  // Variable: instance
 	oidRMONEventDescription                     = "1.3.6.1.2.1.16.9.1.1.2"  // Variable: summary

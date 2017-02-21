@@ -28,6 +28,7 @@ func init() {
 	logrus.SetLevel(logrus.DebugLevel)
 
 	// Configure which OIDs to use for the SNMP Traps:
+	trapOIDs.TrapAddress, _ = snmpgo.NewOid("1.3.6.1.6.3.18.1.3")
 	trapOIDs.FiringTrap, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.0.1")
 	trapOIDs.RecoveryTrap, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.0.2")
 	trapOIDs.Instance, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.1.1")

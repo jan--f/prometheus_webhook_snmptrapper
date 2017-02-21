@@ -5,6 +5,7 @@ import (
 )
 
 type TrapOIDs struct {
+	TrapAddress  *snmpgo.Oid
 	FiringTrap   *snmpgo.Oid
 	RecoveryTrap *snmpgo.Oid
 	Instance     *snmpgo.Oid

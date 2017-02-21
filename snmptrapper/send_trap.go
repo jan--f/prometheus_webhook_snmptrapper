@@ -2,6 +2,8 @@ package snmptrapper
 
 import (
 	"time"
+	"net"
+	"strings"
 
 	types "github.com/chrusty/prometheus_webhook_snmptrapper/types"
 
@@ -54,6 +56,15 @@ func sendTrap(alert types.Alert, uptime uint32) {
 	}
 
 	varBinds = append(varBinds, snmpgo.NewVarBind(trapOIDs.URL, snmpgo.NewOctetString([]byte(alert.GeneratorURL))))
+
+	// Set trap source address
+	ips, err := net.LookupIP(strings.Split(alert.Labels["instance"], ":")[0])
+	if err != nil {
+		log.WithFields(logrus.Fields{"error": err}).Error("Failed to resolve name")
+	} else {
+		ip := ips[0]
+		varBinds = append(varBinds, snmpgo.NewVarBind(trapOIDs.TrapAddress, snmpgo.NewIpaddress(ip[12], ip[13], ip[14], ip[15])))
+	}
 
 	// Create an SNMP "connection":
 	if err = snmp.Open(); err != nil {
