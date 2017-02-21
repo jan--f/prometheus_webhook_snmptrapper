@@ -37,6 +37,7 @@ func init() {
 	trapOIDs.Description, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.1.5")
 	trapOIDs.JobName, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.1.6")
 	trapOIDs.TimeStamp, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.1.7")
+	trapOIDs.URL, _ = snmpgo.NewOid("1.3.6.1.3.1977.1.1.8")
 }
 
 func Run(myConfigFromMain config.Config, alertsChannel chan types.Alert, waitGroup *sync.WaitGroup) {

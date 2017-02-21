@@ -53,6 +53,8 @@ func sendTrap(alert types.Alert, uptime uint32) {
 		varBinds = append(varBinds, snmpgo.NewVarBind(trapOIDs.TimeStamp, snmpgo.NewOctetString([]byte(alert.EndsAt.Format(time.RFC3339)))))
 	}
 
+	varBinds = append(varBinds, snmpgo.NewVarBind(trapOIDs.URL, snmpgo.NewOctetString([]byte(alert.GeneratorURL))))
+
 	// Create an SNMP "connection":
 	if err = snmp.Open(); err != nil {
 		log.WithFields(logrus.Fields{"error": err}).Error("Failed to open SNMP connection")

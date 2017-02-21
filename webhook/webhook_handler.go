@@ -71,11 +71,12 @@ func validatePayload(payload []byte) (error, []types.Alert) {
 
 		// Make a new SNMP alert:
 		alerts = append(alerts, types.Alert{
-			Status:      prometheusData.Status,
-			Labels:      alertDetails.Labels,
-			Annotations: alertDetails.Annotations,
-			StartsAt:    alertDetails.StartsAt,
-			EndsAt:      alertDetails.EndsAt,
+			Status:       prometheusData.Status,
+			Labels:       alertDetails.Labels,
+			Annotations:  alertDetails.Annotations,
+			StartsAt:     alertDetails.StartsAt,
+			EndsAt:       alertDetails.EndsAt,
+			GeneratorURL: alertDetails.GeneratorURL,
 		})
 
 	}

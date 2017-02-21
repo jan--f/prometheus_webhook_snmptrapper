@@ -14,4 +14,5 @@ type TrapOIDs struct {
 	Description  *snmpgo.Oid
 	JobName      *snmpgo.Oid
 	TimeStamp    *snmpgo.Oid
+	URL          *snmpgo.Oid
 }

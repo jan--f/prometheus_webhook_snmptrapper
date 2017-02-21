@@ -88,6 +88,14 @@ prometheusTrapperNotificationTimestamp OBJECT-TYPE
         "The time the notification-event occurred."
 ::= { prometheusTrapperNotificationObjects 7 }
 
+prometheusTrapperNotificationURL OBJECT-TYPE
+    SYNTAX      DisplayString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+        "The URL of the generator of the alert."
+::= { prometheusTrapperNotificationObjects 8 }
+
 prometheusTrapperFiringNotification NOTIFICATION-TYPE
     OBJECTS     {
                     prometheusTrapperNotificationInstance,
@@ -95,7 +103,8 @@ prometheusTrapperFiringNotification NOTIFICATION-TYPE
                     prometheusTrapperNotificationLocation,
                     prometheusTrapperNotificationSeverity,
                     prometheusTrapperNotificationDescription,
-                    prometheusTrapperNotificationTimestamp
+                    prometheusTrapperNotificationTimestamp,
+                    prometheusTrapperNotificationURL
                 }
     STATUS      current
     DESCRIPTION
@@ -109,7 +118,8 @@ prometheusTrapperRecoveryNotification NOTIFICATION-TYPE
                     prometheusTrapperNotificationLocation,
                     prometheusTrapperNotificationSeverity,
                     prometheusTrapperNotificationDescription,
-                    prometheusTrapperNotificationTimestamp
+                    prometheusTrapperNotificationTimestamp,
+                    prometheusTrapperNotificationURL
                 }
     STATUS      current
     DESCRIPTION
