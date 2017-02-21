@@ -103,6 +103,7 @@ prometheusTrapperFiringNotification NOTIFICATION-TYPE
                     prometheusTrapperNotificationLocation,
                     prometheusTrapperNotificationSeverity,
                     prometheusTrapperNotificationDescription,
+                    prometheusTrapperNotificationJob,
                     prometheusTrapperNotificationTimestamp,
                     prometheusTrapperNotificationURL
                 }
@@ -118,6 +119,7 @@ prometheusTrapperRecoveryNotification NOTIFICATION-TYPE
                     prometheusTrapperNotificationLocation,
                     prometheusTrapperNotificationSeverity,
                     prometheusTrapperNotificationDescription,
+                    prometheusTrapperNotificationJob,
                     prometheusTrapperNotificationTimestamp,
                     prometheusTrapperNotificationURL
                 }
